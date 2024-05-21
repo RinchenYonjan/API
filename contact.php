@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 
 try {
     if (!empty($data)) {
-        $sql = "INSERT INTO contact_info (Username, Address, Job, Description) VALUES ('$username', '$address', '$job', '$description')";
+        $sql = "INSERT INTO contact_info (username, address, job, description) VALUES ('$username', '$address', '$job', '$description')";
         $result = $conn->query($sql);
     
             if ($result) {
