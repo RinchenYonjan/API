@@ -18,16 +18,16 @@ if ($conn->connect_error) {
 $data = json_decode(file_get_contents('php://input'), true);
 
 // These lines extract individual pieces of user data (username, address, job, and description) from the associative array.
-$username = $data["username"];
-$address = $data["address"];
-$job = $data["job"];
+$company = $data["company"];
+$country = $data["country"];
+$name = $data["name"];
 $description = $data["description"];
 
 try {
     if (!empty($data)) {
         // Constructs a prepared statement to insert the user data.
-        $stmt = $conn->prepare("INSERT INTO contact_info (username, address, job, description) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $username, $address, $job, $description); // Bind parameters to the prepared statement
+        $stmt = $conn->prepare("INSERT INTO contact_info (company, country, name, description) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $company, $country, $name, $description); // Bind parameters to the prepared statement
         
         // Executes the prepared statement
         if ($stmt->execute()) {
